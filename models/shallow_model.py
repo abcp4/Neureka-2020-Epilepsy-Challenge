@@ -89,7 +89,7 @@ class ConvNN(object):
         temperature = Lambda(lambda x: x / temp)(dens2)
         last = Activation('softmax')(temperature)
 
-        self.model = Model(input=inputs, output=last)
+        self.model = Model(inputs, last)
 
         adam = Adam(lr=5e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
         self.model.compile(loss='binary_crossentropy',
